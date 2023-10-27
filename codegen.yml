@@ -4,6 +4,8 @@ generates:
     config:
       onlyTypes: true
       # immutableTypes: true
+      scalars:
+        Date: Date
 
       declarationKind: "interface"
       strictScalars: true

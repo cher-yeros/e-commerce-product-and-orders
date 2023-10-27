@@ -12,10 +12,12 @@ import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 import dotenv from "dotenv";
 import { Request, Response } from "express";
 import { PubSub } from "graphql-subscriptions";
-import { UserType } from "./shared/models/user.model";
+// import { UserType } from "./shared/models/user.model";
 import loadMySchemas from "./resolvers";
 import sequelize from "./utils/db_connection";
 import gatewaySchema from "./resolvers";
+
+import { User as UserType } from "./types/resolvers-types";
 
 const pubSub = new PubSub();
 

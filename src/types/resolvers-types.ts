@@ -1,187 +1,216 @@
+
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  Date: { input: Date; output: Date; }
 }
 
-export interface IAuthPayload {
-  token: Scalars["String"]["output"];
-  user: IUser;
+export interface AuthPayload {
+  token: Scalars['String']['output'];
+  user: User;
 }
 
-export interface ICreateOrderInput {
-  productId: Scalars["ID"]["input"];
-  quantity: Scalars["Int"]["input"];
-  totalPrice: Scalars["Float"]["input"];
-  userId: Scalars["ID"]["input"];
+export interface CreateOrderInput {
+  productId: Scalars['ID']['input'];
+  quantity: Scalars['Int']['input'];
+  totalPrice: Scalars['Float']['input'];
+  userId: Scalars['ID']['input'];
 }
 
-export interface ICreateProductInput {
-  name: Scalars["String"]["input"];
-  price: Scalars["Float"]["input"];
-  quantity: Scalars["Int"]["input"];
-  userId: Scalars["ID"]["input"];
+export interface CreateProductInput {
+  name: Scalars['String']['input'];
+  price: Scalars['Float']['input'];
+  quantity: Scalars['Int']['input'];
+  userId: Scalars['ID']['input'];
 }
 
-export interface ICreateUserInput {
-  email: Scalars["String"]["input"];
-  name: Scalars["String"]["input"];
-  password: Scalars["String"]["input"];
+export interface CreateUserInput {
+  email: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  password: Scalars['String']['input'];
 }
 
-export interface ILoginInput {
-  email: Scalars["String"]["input"];
-  password: Scalars["String"]["input"];
+export interface LoginInput {
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
 }
 
-export interface IMutation {
-  createOrder?: IOrder;
-  createProduct?: IProduct;
-  createUser?: IUser;
-  deleteOrder?: Scalars["Boolean"]["output"];
-  deleteProduct?: Scalars["Boolean"]["output"];
-  deleteUser?: Scalars["Boolean"]["output"];
-  login?: IAuthPayload;
-  signup?: IAuthPayload;
-  updateOrder?: IOrder;
-  updateProduct?: IProduct;
-  updateUser?: IUser;
+export interface Mutation {
+  createOrder?: Order;
+  createProduct?: Product;
+  createUser?: User;
+  deleteOrder?: Scalars['Boolean']['output'];
+  deleteProduct?: Scalars['Boolean']['output'];
+  deleteUser?: Scalars['Boolean']['output'];
+  login?: AuthPayload;
+  signup?: AuthPayload;
+  updateOrder?: Order;
+  updateProduct?: Product;
+  updateUser?: User;
 }
 
-export interface IMutationcreateOrderArgs {
-  input: ICreateOrderInput;
+
+export interface MutationcreateOrderArgs {
+  input: CreateOrderInput;
 }
 
-export interface IMutationcreateProductArgs {
-  input: ICreateProductInput;
+
+export interface MutationcreateProductArgs {
+  input: CreateProductInput;
 }
 
-export interface IMutationcreateUserArgs {
-  input: ICreateUserInput;
+
+export interface MutationcreateUserArgs {
+  input: CreateUserInput;
 }
 
-export interface IMutationdeleteOrderArgs {
-  id: Scalars["ID"]["input"];
+
+export interface MutationdeleteOrderArgs {
+  id: Scalars['ID']['input'];
 }
 
-export interface IMutationdeleteProductArgs {
-  id: Scalars["ID"]["input"];
+
+export interface MutationdeleteProductArgs {
+  id: Scalars['ID']['input'];
 }
 
-export interface IMutationdeleteUserArgs {
-  id: Scalars["ID"]["input"];
+
+export interface MutationdeleteUserArgs {
+  id: Scalars['ID']['input'];
 }
 
-export interface IMutationloginArgs {
-  input: ILoginInput;
+
+export interface MutationloginArgs {
+  input: LoginInput;
 }
 
-export interface IMutationsignupArgs {
-  input: ICreateUserInput;
+
+export interface MutationsignupArgs {
+  input: CreateUserInput;
 }
 
-export interface IMutationupdateOrderArgs {
-  input: IUpdateOrderInput;
+
+export interface MutationupdateOrderArgs {
+  input: UpdateOrderInput;
 }
 
-export interface IMutationupdateProductArgs {
-  input: IUpdateProductInput;
+
+export interface MutationupdateProductArgs {
+  input: UpdateProductInput;
 }
 
-export interface IMutationupdateUserArgs {
-  input: IUpdateUserInput;
+
+export interface MutationupdateUserArgs {
+  input: UpdateUserInput;
 }
 
-export interface INotification {
-  id: Scalars["ID"]["output"];
-  isRead: Scalars["Boolean"]["output"];
-  message: Scalars["String"]["output"];
-  user: IUser;
+export interface Notification {
+  createdAt: Scalars['Date']['output'];
+  id: Scalars['ID']['output'];
+  isRead: Scalars['Boolean']['output'];
+  message: Scalars['String']['output'];
+  order: Order;
+  updatedAt: Scalars['Date']['output'];
+  user: User;
 }
 
-export interface IOrder {
-  id: Scalars["ID"]["output"];
-  product: IProduct;
-  quantity: Scalars["Int"]["output"];
-  user: IUser;
+export interface Order {
+  createdAt: Scalars['Date']['output'];
+  id: Scalars['ID']['output'];
+  products: Array<Product>;
+  quantity: Scalars['Int']['output'];
+  totalPrice: Scalars['Float']['output'];
+  updatedAt: Scalars['Date']['output'];
+  user: User;
 }
 
-export interface IPayment {
-  amount: Scalars["Float"]["output"];
-  id: Scalars["ID"]["output"];
-  status: Scalars["String"]["output"];
-  user: IUser;
+export interface Payment {
+  amount: Scalars['Float']['output'];
+  createdAt: Scalars['Date']['output'];
+  id: Scalars['ID']['output'];
+  status: Scalars['String']['output'];
+  updatedAt: Scalars['Date']['output'];
 }
 
-export interface IProduct {
-  id: Scalars["ID"]["output"];
-  name: Scalars["String"]["output"];
-  orders: Array<IOrder>;
-  price: Scalars["Float"]["output"];
-  user: IUser;
+export interface Product {
+  createdAt: Scalars['Date']['output'];
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
+  orders: Array<Order>;
+  price: Scalars['Float']['output'];
+  quantity: Scalars['Int']['output'];
+  serialNo: Scalars['String']['output'];
+  updatedAt: Scalars['Date']['output'];
+  user: User;
 }
 
-export interface IQuery {
-  getOrder?: IOrder;
-  getOrders: Array<IOrder>;
-  getProduct?: IProduct;
-  getProducts: Array<IProduct>;
-  getUser?: IUser;
-  getUsers: Array<IUser>;
-  me?: IUser;
+export interface Query {
+  getOrder?: Order;
+  getOrders: Array<Order>;
+  getProduct?: Product;
+  getProducts: Array<Product>;
+  getUser?: User;
+  getUsers: Array<User>;
+  me?: User;
 }
 
-export interface IQuerygetOrderArgs {
-  id: Scalars["ID"]["input"];
+
+export interface QuerygetOrderArgs {
+  id: Scalars['ID']['input'];
 }
 
-export interface IQuerygetProductArgs {
-  id: Scalars["ID"]["input"];
+
+export interface QuerygetProductArgs {
+  id: Scalars['ID']['input'];
 }
 
-export interface IQuerygetUserArgs {
-  id: Scalars["ID"]["input"];
+
+export interface QuerygetUserArgs {
+  id: Scalars['ID']['input'];
 }
 
-export interface ISubscription {
-  orderCreated?: IOrder;
-  orderDeleted?: Scalars["ID"]["output"];
-  orderUpdated?: IOrder;
-  productCreated?: IProduct;
-  productDeleted?: Scalars["ID"]["output"];
-  productUpdated?: IProduct;
-  userCreated?: IUser;
-  userDeleted?: Scalars["ID"]["output"];
-  userUpdated?: IUser;
+export interface Subscription {
+  orderCreated?: Order;
+  orderDeleted?: Scalars['ID']['output'];
+  orderUpdated?: Order;
+  productCreated?: Product;
+  productDeleted?: Scalars['ID']['output'];
+  productUpdated?: Product;
+  userCreated?: User;
+  userDeleted?: Scalars['ID']['output'];
+  userUpdated?: User;
 }
 
-export interface IUpdateOrderInput {
-  id: Scalars["ID"]["input"];
-  quantity?: Scalars["Int"]["input"];
+export interface UpdateOrderInput {
+  id: Scalars['ID']['input'];
+  quantity?: Scalars['Int']['input'];
 }
 
-export interface IUpdateProductInput {
-  id: Scalars["ID"]["input"];
-  name?: Scalars["String"]["input"];
-  price?: Scalars["Float"]["input"];
+export interface UpdateProductInput {
+  id: Scalars['ID']['input'];
+  name?: Scalars['String']['input'];
+  price?: Scalars['Float']['input'];
 }
 
-export interface IUpdateUserInput {
-  email?: Scalars["String"]["input"];
-  id: Scalars["ID"]["input"];
-  name?: Scalars["String"]["input"];
+export interface UpdateUserInput {
+  email?: Scalars['String']['input'];
+  id: Scalars['ID']['input'];
+  name?: Scalars['String']['input'];
 }
 
-export interface IUser {
-  age?: Scalars["Int"]["output"];
-  email: Scalars["String"]["output"];
-  id: Scalars["ID"]["output"];
-  name: Scalars["String"]["output"];
-  notifications: Array<INotification>;
-  orders: Array<IOrder>;
-  payments: Array<IPayment>;
-  products: Array<IProduct>;
+export interface User {
+  createdAt: Scalars['Date']['output'];
+  email: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
+  notifications: Array<Notification>;
+  orders: Array<Order>;
+  password: Scalars['String']['output'];
+  payments: Array<Payment>;
+  products: Array<Product>;
+  updatedAt: Scalars['Date']['output'];
 }

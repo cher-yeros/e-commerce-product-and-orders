@@ -15,13 +15,10 @@ export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' |
 const pattern = /InputMaybe<(.+?)>/g;
 const pattern2 = /Maybe<(.+?)>/g;
 
-const pattern3 = /Maybe<(.+?)>/g;
-
 const transformedContent = data
   .replace(unwantedCode, "")
   .replace(pattern, "$1")
-  .replace(pattern2, "$1")
-  .replace("export type T = Maybe<T>;", "");
+  .replace(pattern2, "$1");
 
 fs.writeFileSync(file, transformedContent, "utf8");
 

@@ -1,9 +1,6 @@
 #import './base.schema.graphql'
 
-type Payment {
-  id: ID!
-  amount: Float!
-  status: String!
+type OrderProduct {
   createdAt: Date!
   updatedAt: Date!
 }
