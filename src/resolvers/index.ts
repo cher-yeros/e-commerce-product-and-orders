@@ -45,7 +45,7 @@ const allSchema = loadSchemaSync(allSchemaPath, {
 });
 
 const mergedSchema = mergeSchemas({
-  schemas: [allOperation],
+  schemas: [allOperation, allSchema],
 });
 
 const gatewaySchema = addResolversToSchema({

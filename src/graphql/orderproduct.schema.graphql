@@ -1,6 +1,0 @@
-#import './base.schema.graphql'
-
-type OrderProduct {
-  createdAt: Date!
-  updatedAt: Date!
-}

@@ -1,9 +1,0 @@
-#import './base.schema.graphql'
-
-type Payment {
-  id: ID!
-  amount: Float!
-  status: String!
-  createdAt: Date!
-  updatedAt: Date!
-}
