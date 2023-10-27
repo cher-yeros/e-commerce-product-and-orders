@@ -1,0 +1,30 @@
+#import "../shared/graphql/order.schema.graphql"
+
+input CreateOrderInput {
+  userId: ID!
+  productId: ID!
+  quantity: Int!
+  totalPrice: Float!
+}
+
+input UpdateOrderInput {
+  id: ID!
+  quantity: Int
+}
+
+type Query {
+  getOrder(id: ID!): Order
+  getOrders: [Order!]!
+}
+
+type Mutation {
+  createOrder(input: CreateOrderInput!): Order
+  updateOrder(input: UpdateOrderInput!): Order
+  deleteOrder(id: ID!): Boolean
+}
+
+type Subscription {
+  orderCreated: Order
+  orderUpdated: Order
+  orderDeleted: ID
+}

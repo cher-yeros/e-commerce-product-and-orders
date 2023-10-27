@@ -1,0 +1,31 @@
+#import "../shared/graphql/product.schema.graphql"
+
+input CreateProductInput {
+  name: String!
+  price: Float!
+  userId: ID!
+  quantity: Int!
+}
+
+input UpdateProductInput {
+  id: ID!
+  name: String
+  price: Float
+}
+
+type Query {
+  getProduct(id: ID!): Product
+  getProducts: [Product!]!
+}
+
+type Mutation {
+  createProduct(input: CreateProductInput!): Product
+  updateProduct(input: UpdateProductInput!): Product
+  deleteProduct(id: ID!): Boolean
+}
+
+type Subscription {
+  productCreated: Product
+  productUpdated: Product
+  productDeleted: ID
+}

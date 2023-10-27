@@ -1,0 +1,19 @@
+schema: "src/schema/**/*.graphql"
+generates:
+  "src/types/resolvers-types.ts":
+    config:
+      onlyTypes: true
+      # immutableTypes: true
+
+      declarationKind: "interface"
+      strictScalars: true
+      namingConvention: "keep"
+      printFieldsOnNewLines: true
+      # typesPrefix: "I"
+
+      useIndexSignature: true
+      skipTypename: true
+      preResolveTypes: true
+
+    plugins:
+      - "typescript"

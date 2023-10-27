@@ -12,9 +12,10 @@ import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 import dotenv from "dotenv";
 import { Request, Response } from "express";
 import { PubSub } from "graphql-subscriptions";
-import { UserType } from "./models/user.model";
-import schema from "./schema";
+import { UserType } from "./shared/models/user.model";
+import loadMySchemas from "./resolvers";
 import sequelize from "./utils/db_connection";
+import gatewaySchema from "./resolvers";
 
 const pubSub = new PubSub();
 
@@ -39,62 +40,66 @@ var corsOptions = {
   credentials: true,
 };
 
-const server = new ApolloServer<MyContext>({
-  schema: schema,
-  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-  introspection: true,
-});
+(async () => {
+  // const schema4 = await loadMySchemas();
 
-server.start().then(() => {
-  app.use(
-    "/graphql",
-    [cors<cors.CorsRequest>(corsOptions), json(), cookieParser()],
-    expressMiddleware(server, {
-      context: async ({ req, res }: { req: Request; res: Response }) => {
-        const { token } = req.cookies;
+  const server = new ApolloServer<MyContext>({
+    schema: gatewaySchema,
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    introspection: true,
+  });
 
-        const secret = process.env.JWT_SECRET;
+  server.start().then(() => {
+    app.use(
+      "/graphql",
+      [cors<cors.CorsRequest>(corsOptions), json(), cookieParser()],
+      expressMiddleware(server, {
+        context: async ({ req, res }: { req: Request; res: Response }) => {
+          const { token } = req.cookies;
 
-        if (token) {
-          const decoded = jwt.verify(
-            token,
-            secret as Secret
-          ) as unknown as CustomJwtPayload;
+          const secret = process.env.JWT_SECRET;
 
-          const user = decoded.user;
-          if (!user) {
-            // throw new GraphQLError("User is not authenticated", {
+          if (token) {
+            const decoded = jwt.verify(
+              token,
+              secret as Secret
+            ) as unknown as CustomJwtPayload;
+
+            const user = decoded.user;
+            if (!user) {
+              // throw new GraphQLError("User is not authenticated", {
+              //   extensions: {
+              //     code: "UNAUTHENTICATED",
+              //     http: { status: 401 },
+              //   },
+              // });
+            } else {
+              (req as Request & { user: UserType }).user = user;
+            }
+          } else {
+            // throw new GraphQLError("Token not found!", {
             //   extensions: {
             //     code: "UNAUTHENTICATED",
             //     http: { status: 401 },
             //   },
             // });
-          } else {
-            (req as Request & { user: UserType }).user = user;
           }
-        } else {
-          // throw new GraphQLError("Token not found!", {
-          //   extensions: {
-          //     code: "UNAUTHENTICATED",
-          //     http: { status: 401 },
-          //   },
-          // });
-        }
 
-        return { req, res, pubSub };
-      },
-    })
-  );
-
-  new Promise<void>((resolve) =>
-    httpServer.listen({ port: process.env.PORT }, resolve)
-  ).then(() => {
-    sequelize;
-    console.log(
-      `\n🚀  Server ready at http://${process.env.MY_NW_IP}:${process.env.PORT}/graphql`
+          return { req, res, pubSub };
+        },
+      })
     );
+
+    new Promise<void>((resolve) =>
+      httpServer.listen({ port: process.env.PORT }, resolve)
+    ).then(() => {
+      console.log(
+        `\n🚀  Server ready at http://${process.env.MY_NW_IP}:${process.env.PORT}/graphql`
+      );
+      sequelize;
+    });
   });
-});
+})();
 
 // https://github.com/cher-yeros/e-commerce-product-and-orders.git
 // https://github.com/cher-yeros/e-commerce-payment-and-notification.git
