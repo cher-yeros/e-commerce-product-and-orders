@@ -90,6 +90,12 @@ const modelPath = path.join(__dirname, "../shared/models");
 
 const dirs = readdirSync(modelPath);
 
+const basePath = path.join(__dirname, `../shared/graphql/base.schema.graphql`);
+
+//  const typeDef = generateGraphQLType(`model.default`);
+
+writeFileSync(basePath, `scalar Date`);
+
 dirs.forEach((file) => {
   const model = require(path.join(modelPath, file));
 

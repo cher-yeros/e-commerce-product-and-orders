@@ -1,8 +1,0 @@
-#import './user.schema.graphql'
-
-type Payment {
-  id: ID!
-  amount: Float!
-  status: String!
-  user: User!
-}

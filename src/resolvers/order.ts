@@ -1,6 +1,6 @@
 import { PubSub } from "graphql-subscriptions";
-import Order from "../shared/models/order.model";
 import { CreateOrderInput, UpdateOrderInput } from "../types/resolvers-types";
+import Order from "../shared/models/order.model";
 const pubsub = new PubSub();
 
 const orderResolvers = {
