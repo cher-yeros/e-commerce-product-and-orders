@@ -1,6 +1,9 @@
 import { PubSub } from "graphql-subscriptions";
 import Product from "../shared/models/product.model";
-import { CreateProductInput, UpdateProductInput } from "../types/schema-input";
+import {
+  CreateProductInput,
+  UpdateProductInput,
+} from "../types/resolvers-types";
 
 const pubsub = new PubSub();
 

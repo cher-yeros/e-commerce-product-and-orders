@@ -7,7 +7,7 @@ generates:
       scalars:
         Date: Date
 
-      declarationKind: "interface"
+      # declarationKind: "interface"
       strictScalars: true
       namingConvention: "keep"
       printFieldsOnNewLines: true

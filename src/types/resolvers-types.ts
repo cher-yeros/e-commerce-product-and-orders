@@ -1,45 +1,45 @@
 
 /** All built-in and custom scalars, mapped to their actual values */
-export interface Scalars {
+export type Scalars = {
   ID: { input: string; output: string; }
   String: { input: string; output: string; }
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   Date: { input: Date; output: Date; }
-}
+};
 
-export interface AuthPayload {
+export type AuthPayload = {
   token: Scalars['String']['output'];
   user: User;
-}
+};
 
-export interface CreateOrderInput {
+export type CreateOrderInput = {
   productId: Scalars['ID']['input'];
   quantity: Scalars['Int']['input'];
   totalPrice: Scalars['Float']['input'];
   userId: Scalars['ID']['input'];
-}
+};
 
-export interface CreateProductInput {
+export type CreateProductInput = {
   name: Scalars['String']['input'];
   price: Scalars['Float']['input'];
   quantity: Scalars['Int']['input'];
   userId: Scalars['ID']['input'];
-}
+};
 
-export interface CreateUserInput {
+export type CreateUserInput = {
   email: Scalars['String']['input'];
   name: Scalars['String']['input'];
   password: Scalars['String']['input'];
-}
+};
 
-export interface LoginInput {
+export type LoginInput = {
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
-}
+};
 
-export interface Mutation {
+export type Mutation = {
   createOrder?: Order;
   createProduct?: Product;
   createUser?: User;
@@ -51,64 +51,64 @@ export interface Mutation {
   updateOrder?: Order;
   updateProduct?: Product;
   updateUser?: User;
-}
+};
 
 
-export interface MutationcreateOrderArgs {
+export type MutationcreateOrderArgs = {
   input: CreateOrderInput;
-}
+};
 
 
-export interface MutationcreateProductArgs {
+export type MutationcreateProductArgs = {
   input: CreateProductInput;
-}
+};
 
 
-export interface MutationcreateUserArgs {
+export type MutationcreateUserArgs = {
   input: CreateUserInput;
-}
+};
 
 
-export interface MutationdeleteOrderArgs {
+export type MutationdeleteOrderArgs = {
   id: Scalars['ID']['input'];
-}
+};
 
 
-export interface MutationdeleteProductArgs {
+export type MutationdeleteProductArgs = {
   id: Scalars['ID']['input'];
-}
+};
 
 
-export interface MutationdeleteUserArgs {
+export type MutationdeleteUserArgs = {
   id: Scalars['ID']['input'];
-}
+};
 
 
-export interface MutationloginArgs {
+export type MutationloginArgs = {
   input: LoginInput;
-}
+};
 
 
-export interface MutationsignupArgs {
+export type MutationsignupArgs = {
   input: CreateUserInput;
-}
+};
 
 
-export interface MutationupdateOrderArgs {
+export type MutationupdateOrderArgs = {
   input: UpdateOrderInput;
-}
+};
 
 
-export interface MutationupdateProductArgs {
+export type MutationupdateProductArgs = {
   input: UpdateProductInput;
-}
+};
 
 
-export interface MutationupdateUserArgs {
+export type MutationupdateUserArgs = {
   input: UpdateUserInput;
-}
+};
 
-export interface Notification {
+export type Notification = {
   createdAt: Scalars['Date']['output'];
   id: Scalars['ID']['output'];
   isRead: Scalars['Boolean']['output'];
@@ -116,9 +116,9 @@ export interface Notification {
   order: Order;
   updatedAt: Scalars['Date']['output'];
   user: User;
-}
+};
 
-export interface Order {
+export type Order = {
   createdAt: Scalars['Date']['output'];
   id: Scalars['ID']['output'];
   products: Array<Product>;
@@ -126,17 +126,17 @@ export interface Order {
   totalPrice: Scalars['Float']['output'];
   updatedAt: Scalars['Date']['output'];
   user: User;
-}
+};
 
-export interface Payment {
+export type Payment = {
   amount: Scalars['Float']['output'];
   createdAt: Scalars['Date']['output'];
   id: Scalars['ID']['output'];
   status: Scalars['String']['output'];
   updatedAt: Scalars['Date']['output'];
-}
+};
 
-export interface Product {
+export type Product = {
   createdAt: Scalars['Date']['output'];
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
@@ -146,9 +146,9 @@ export interface Product {
   serialNo: Scalars['String']['output'];
   updatedAt: Scalars['Date']['output'];
   user: User;
-}
+};
 
-export interface Query {
+export type Query = {
   getOrder?: Order;
   getOrders: Array<Order>;
   getProduct?: Product;
@@ -156,24 +156,24 @@ export interface Query {
   getUser?: User;
   getUsers: Array<User>;
   me?: User;
-}
+};
 
 
-export interface QuerygetOrderArgs {
+export type QuerygetOrderArgs = {
   id: Scalars['ID']['input'];
-}
+};
 
 
-export interface QuerygetProductArgs {
+export type QuerygetProductArgs = {
   id: Scalars['ID']['input'];
-}
+};
 
 
-export interface QuerygetUserArgs {
+export type QuerygetUserArgs = {
   id: Scalars['ID']['input'];
-}
+};
 
-export interface Subscription {
+export type Subscription = {
   orderCreated?: Order;
   orderDeleted?: Scalars['ID']['output'];
   orderUpdated?: Order;
@@ -183,26 +183,26 @@ export interface Subscription {
   userCreated?: User;
   userDeleted?: Scalars['ID']['output'];
   userUpdated?: User;
-}
+};
 
-export interface UpdateOrderInput {
+export type UpdateOrderInput = {
   id: Scalars['ID']['input'];
   quantity?: Scalars['Int']['input'];
-}
+};
 
-export interface UpdateProductInput {
+export type UpdateProductInput = {
   id: Scalars['ID']['input'];
   name?: Scalars['String']['input'];
   price?: Scalars['Float']['input'];
-}
+};
 
-export interface UpdateUserInput {
+export type UpdateUserInput = {
   email?: Scalars['String']['input'];
   id: Scalars['ID']['input'];
   name?: Scalars['String']['input'];
-}
+};
 
-export interface User {
+export type User = {
   createdAt: Scalars['Date']['output'];
   email: Scalars['String']['output'];
   id: Scalars['ID']['output'];
@@ -213,4 +213,4 @@ export interface User {
   payments: Array<Payment>;
   products: Array<Product>;
   updatedAt: Scalars['Date']['output'];
-}
+};
