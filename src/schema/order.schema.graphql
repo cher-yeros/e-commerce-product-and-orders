@@ -1,3 +1,4 @@
+#import './base.schema.graphql'
 #import './user.schema.graphql'
 #import './product.schema.graphql'
 
@@ -5,9 +6,8 @@ type Order {
   id: ID!
   quantity: Int!
   totalPrice: Float!
-  userId: ID
   createdAt: Date!
   updatedAt: Date!
-  user: User
-  products: [Product]
+  user: User!
+  products: [Product!]!
 }

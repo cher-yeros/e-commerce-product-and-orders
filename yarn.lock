@@ -805,18 +805,6 @@
     "@graphql-tools/utils" "^10.0.0"
     "tslib" "~2.5.0"
 
-"@graphql-codegen/typescript-resolvers@^4.0.1":
-  "integrity" "sha512-dydE2VsNud/gZZG9FV0DldPA7voExCn7FQE3V9ZAjhqCDjCcSDHUIWxG5JoaW0G75ooPEDmN7ZFd+uaJ2BEqzQ=="
-  "resolved" "https://registry.npmjs.org/@graphql-codegen/typescript-resolvers/-/typescript-resolvers-4.0.1.tgz"
-  "version" "4.0.1"
-  dependencies:
-    "@graphql-codegen/plugin-helpers" "^5.0.0"
-    "@graphql-codegen/typescript" "^4.0.1"
-    "@graphql-codegen/visitor-plugin-common" "4.0.1"
-    "@graphql-tools/utils" "^10.0.0"
-    "auto-bind" "~4.0.0"
-    "tslib" "~2.5.0"
-
 "@graphql-codegen/typescript@^4.0.1":
   "integrity" "sha512-3YziQ21dCVdnHb+Us1uDb3pA6eG5Chjv0uTK+bt9dXeMlwYBU8MbtzvQTo4qvzWVC1AxSOKj0rgfNu1xCXqJyA=="
   "resolved" "https://registry.npmjs.org/@graphql-codegen/typescript/-/typescript-4.0.1.tgz"
@@ -854,17 +842,6 @@
     "@whatwg-node/fetch" "^0.9.0"
     "tslib" "^2.4.0"
 
-"@graphql-tools/batch-delegate@^9.0.0":
-  "integrity" "sha512-23NmxcHQeKcfhMQyrRPTZfW4/+bSpAyR/qAhRjx+/hikDIa1Uv2XVgV9jIitSgM0OEk/KGPB4VQv+LCOWvAYiw=="
-  "resolved" "https://registry.npmjs.org/@graphql-tools/batch-delegate/-/batch-delegate-9.0.0.tgz"
-  "version" "9.0.0"
-  dependencies:
-    "@graphql-tools/delegate" "^10.0.0"
-    "@graphql-tools/utils" "^10.0.0"
-    "dataloader" "2.2.2"
-    "tslib" "^2.4.0"
-    "value-or-promise" "^1.0.12"
-
 "@graphql-tools/batch-execute@^9.0.1":
   "integrity" "sha512-Y2uwdZI6ZnatopD/SYfZ1eGuQFI7OU2KGZ2/B/7G9ISmgMl5K+ZZWz/PfIEXeiHirIDhyk54s4uka5rj2xwKqQ=="
   "resolved" "https://registry.npmjs.org/@graphql-tools/batch-execute/-/batch-execute-9.0.2.tgz"
@@ -886,7 +863,7 @@
     "tslib" "^2.4.0"
     "unixify" "^1.0.0"
 
-"@graphql-tools/delegate@^10.0.0", "@graphql-tools/delegate@^10.0.1", "@graphql-tools/delegate@^10.0.3":
+"@graphql-tools/delegate@^10.0.0", "@graphql-tools/delegate@^10.0.3":
   "integrity" "sha512-Jor9oazZ07zuWkykD3OOhT/2XD74Zm6Ar0ENZMk75MDD51wB2UWUIMljtHxbJhV5A6UBC2v8x6iY0xdCGiIlyw=="
   "resolved" "https://registry.npmjs.org/@graphql-tools/delegate/-/delegate-10.0.3.tgz"
   "version" "10.0.3"
@@ -1136,21 +1113,6 @@
     "@graphql-tools/utils" "^9.2.1"
     "tslib" "^2.4.0"
     "value-or-promise" "^1.0.12"
-
-"@graphql-tools/stitch@^9.0.3":
-  "integrity" "sha512-G03XahiHDu1pnaS8z2GNfsV/5BribMEUATT5dCHBAqj13Te5y1amZNQePrmw8DLtbf5qDbU6CO7kGHPxv0XO9A=="
-  "resolved" "https://registry.npmjs.org/@graphql-tools/stitch/-/stitch-9.0.3.tgz"
-  "version" "9.0.3"
-  dependencies:
-    "@graphql-tools/batch-delegate" "^9.0.0"
-    "@graphql-tools/delegate" "^10.0.1"
-    "@graphql-tools/executor" "^1.0.0"
-    "@graphql-tools/merge" "^9.0.0"
-    "@graphql-tools/schema" "^10.0.0"
-    "@graphql-tools/utils" "^10.0.0"
-    "@graphql-tools/wrap" "^10.0.0"
-    "tslib" "^2.4.0"
-    "value-or-promise" "^1.0.11"
 
 "@graphql-tools/url-loader@^8.0.0":
   "integrity" "sha512-rPc9oDzMnycvz+X+wrN3PLrhMBQkG4+sd8EzaFN6dypcssiefgWKToXtRKI8HHK68n2xEq1PyrOpkjHFJB+GwA=="
@@ -2363,7 +2325,7 @@
   "resolved" "https://registry.npmjs.org/cssfilter/-/cssfilter-0.0.10.tgz"
   "version" "0.0.10"
 
-"dataloader@^2.2.2", "dataloader@2.2.2":
+"dataloader@^2.2.2":
   "integrity" "sha512-8YnDaaf7N3k/q5HnTJVuzSyLETjoZjVmHc4AeKAzOvKHEFQKcn64OKBfzHYtE9zGjctNM7V9I0MfnUVLpi7M5g=="
   "resolved" "https://registry.npmjs.org/dataloader/-/dataloader-2.2.2.tgz"
   "version" "2.2.2"
@@ -3881,7 +3843,7 @@
   dependencies:
     "picomatch" "^2.2.1"
 
-"reflect-metadata@*", "reflect-metadata@^0.1.13":
+"reflect-metadata@*":
   "integrity" "sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg=="
   "resolved" "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.13.tgz"
   "version" "0.1.13"

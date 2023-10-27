@@ -1,8 +1,8 @@
-schema: "src/schema/**/*.graphql"
+schema: "src/operations/**/*.graphql"
 generates:
   "src/types/resolvers-types.ts":
     config:
-      onlyTypes: true
+      # onlyTypes: true
       # immutableTypes: true
       scalars:
         Date: Date
@@ -10,11 +10,11 @@ generates:
       # declarationKind: "interface"
       strictScalars: true
       namingConvention: "keep"
-      printFieldsOnNewLines: true
+      # printFieldsOnNewLines: true
       # typesPrefix: "I"
 
       useIndexSignature: true
-      skipTypename: true
+      skipTypename: false
       preResolveTypes: true
 
     plugins:

@@ -86,14 +86,11 @@ function generateGraphQLType(model: any): string {
 
 // Generate GraphQL type and write to file
 
-const modelPath = path.join(__dirname, "../shared/models");
+const modelPath = path.join(__dirname, "../models");
 
 const dirs = readdirSync(modelPath);
 
-const basePath = path.join(__dirname, `../shared/graphql/base.schema.graphql`);
-
-//  const typeDef = generateGraphQLType(`model.default`);
-
+const basePath = path.join(__dirname, `../schema/base.schema.graphql`);
 writeFileSync(basePath, `scalar Date`);
 
 dirs.forEach((file) => {
@@ -101,7 +98,7 @@ dirs.forEach((file) => {
 
   const mypath = path.join(
     __dirname,
-    `../shared/graphql/${model.default.name.toLowerCase()}.schema.graphql`
+    `../schema/${model.default.name.toLowerCase()}.schema.graphql`
   );
   const typeDef = generateGraphQLType(model.default);
 

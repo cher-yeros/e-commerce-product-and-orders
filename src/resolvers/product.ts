@@ -1,5 +1,5 @@
 import { PubSub } from "graphql-subscriptions";
-import Product from "../shared/models/product.model";
+import Product from "../models/product.model";
 import {
   CreateProductInput,
   UpdateProductInput,

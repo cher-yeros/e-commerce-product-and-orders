@@ -1,3 +1,4 @@
+#import './base.schema.graphql'
 
 type Payment {
   id: ID!
@@ -5,5 +6,4 @@ type Payment {
   status: String!
   createdAt: Date!
   updatedAt: Date!
-  userId: ID
 }

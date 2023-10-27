@@ -1,4 +1,4 @@
-#import "../shared/graphql/order.schema.graphql"
+#import "../schema/order.schema.graphql"
 
 input CreateOrderInput {
   userId: ID!

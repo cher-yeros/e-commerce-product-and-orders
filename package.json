@@ -22,7 +22,6 @@
     "@graphql-tools/graphql-file-loader": "^8.0.0",
     "@graphql-tools/load": "^8.0.0",
     "@graphql-tools/schema": "^10.0.0",
-    "@graphql-tools/stitch": "^9.0.3",
     "apollo-server": "^3.12.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -34,7 +33,6 @@
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "mysql2": "^3.6.1",
-    "reflect-metadata": "^0.1.13",
     "sequelize": "^6.33.0",
     "sequelize-typescript": "^2.1.5",
     "uuid": "^9.0.1"
@@ -42,7 +40,6 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/typescript": "^4.0.1",
-    "@graphql-codegen/typescript-resolvers": "^4.0.1",
     "@types/cookie-parser": "^1.4.4",
     "@types/cors": "^2.8.14",
     "@types/dotenv": "^8.2.0",

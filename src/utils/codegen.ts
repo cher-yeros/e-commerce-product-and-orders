@@ -15,10 +15,17 @@ export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' |
 const pattern = /InputMaybe<(.+?)>/g;
 const pattern2 = /Maybe<(.+?)>/g;
 
+const pattern3 = /export type Query[\s\S]*?};\n\n/g;
+const pattern4 = /export type Mutation[\s\S]*?};\n\n/g;
+const pattern5 = /export type Subscription[\s\S]*?};\n\n/g;
+
 const transformedContent = data
   .replace(unwantedCode, "")
   .replace(pattern, "$1")
-  .replace(pattern2, "$1");
+  .replace(pattern2, "$1")
+  .replace(pattern3, "")
+  .replace(pattern4, "")
+  .replace(pattern5, "");
 
 fs.writeFileSync(file, transformedContent, "utf8");
 

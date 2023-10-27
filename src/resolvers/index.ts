@@ -1,16 +1,12 @@
 import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
 import { loadSchemaSync } from "@graphql-tools/load";
-import {
-  addResolversToSchema,
-  makeExecutableSchema,
-  mergeSchemas,
-} from "@graphql-tools/schema";
+import { addResolversToSchema, mergeSchemas } from "@graphql-tools/schema";
 import { merge } from "lodash";
 import path from "path";
 
+import { GraphQLScalarType, Kind } from "graphql";
 import orderResolvers from "./order";
 import productResolvers from "./product";
-import { GraphQLScalarType, Kind } from "graphql";
 
 const dateScalar = {
   Date: new GraphQLScalarType({
@@ -37,43 +33,24 @@ const dateScalar = {
   }),
 };
 
-const baseSchema = `#graphql
-    scalar Date
-
-    type Query {
-        _ : Boolean
-    }
-
-    type Mutation {
-        _ : Boolean
-    }
-
-    type Subscription {
-        _ : Boolean
-    }
-
-`;
-
+const allOperationPath = path.join(__dirname, "../operations/**/*.graphql");
 const allSchemaPath = path.join(__dirname, "../schema/**/*.graphql");
+
+const allOperation = loadSchemaSync(allOperationPath, {
+  loaders: [new GraphQLFileLoader()],
+});
 
 const allSchema = loadSchemaSync(allSchemaPath, {
   loaders: [new GraphQLFileLoader()],
 });
 
-const baseScheme = makeExecutableSchema({
-  typeDefs: baseSchema,
-  resolvers: merge(dateScalar),
+const mergedSchema = mergeSchemas({
+  schemas: [allOperation],
 });
 
-const gatewaySchema = mergeSchemas({
-  // typeDefs: baseSchema,
-  schemas: [allSchema, baseScheme],
-  resolvers: merge(productResolvers, orderResolvers),
+const gatewaySchema = addResolversToSchema({
+  schema: mergedSchema,
+  resolvers: merge(dateScalar, productResolvers, orderResolvers),
 });
-
-// const gatewaySchema = addResolversToSchema({
-//   schema: allSchema,
-//   resolvers: merge(productResolvers, orderResolvers),
-// });
 
 export default gatewaySchema;

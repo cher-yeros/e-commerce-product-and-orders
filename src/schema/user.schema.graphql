@@ -1,3 +1,4 @@
+#import './base.schema.graphql'
 #import './product.schema.graphql'
 #import './order.schema.graphql'
 #import './notification.schema.graphql'
@@ -10,8 +11,8 @@ type User {
   password: String!
   createdAt: Date!
   updatedAt: Date!
-  products: [Product]
-  orders: [Order]
-  notifications: [Notification]
-  payments: [Payment]
+  products: [Product!]!
+  orders: [Order!]!
+  notifications: [Notification!]!
+  payments: [Payment!]!
 }

@@ -12,7 +12,7 @@ const sequelize = new Sequelize({
   port: parseInt(process.env.DB_PORT || "3306"),
 
   dialect: "mysql",
-  models: [path.join(__dirname, "../shared/models/**/*.model.ts")],
+  models: [path.join(__dirname, "../models/**/*.model.ts")],
 
   logging: false,
 });

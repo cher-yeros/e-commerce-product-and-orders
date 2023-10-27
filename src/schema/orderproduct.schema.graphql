@@ -1,7 +1,6 @@
+#import './base.schema.graphql'
 
 type OrderProduct {
-  orderId: ID!
-  productId: ID!
   createdAt: Date!
   updatedAt: Date!
 }

@@ -1,3 +1,4 @@
+#import './base.schema.graphql'
 #import './user.schema.graphql'
 #import './order.schema.graphql'
 
@@ -7,8 +8,6 @@ type Notification {
   isRead: Boolean!
   createdAt: Date!
   updatedAt: Date!
-  userId: ID
-  orderId: ID
-  user: User
-  order: Order
+  user: User!
+  order: Order!
 }

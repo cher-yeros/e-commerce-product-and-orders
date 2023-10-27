@@ -1,4 +1,4 @@
-#import "../shared/graphql/product.schema.graphql"
+#import "../schema/product.schema.graphql"
 
 input CreateProductInput {
   name: String!
